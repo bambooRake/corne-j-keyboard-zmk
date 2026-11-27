@@ -31,12 +31,6 @@
         compatible = "zmk,battery-nrf-vddh";
     };
 
-    EXT_POWER {
-        compatible = "zmk,ext-power-generic";
-        control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
-        init-delay-ms = <50>;
-    };
-
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         a-gpios = <&gpio1 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
@@ -161,6 +155,7 @@ zephyr_udc0: &usbd {
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
                 <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            bias-pull-up;
         };
     };
 
@@ -217,7 +212,7 @@ zephyr_udc0: &usbd {
 
 &i2c0 {
     status = "disabled";
-    compatible = "nordic,nrf-twim";
+    compatible = "nordic,nrf-twi";
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";

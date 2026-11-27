@@ -11,7 +11,15 @@
     status = "okay";
 };
 
+&i2c0 {
+    status = "okay";
+};
+
 / {
+    chosen {
+        zephyr,display = &oled;
+    };
+
     joystick_listener: joystick_listener {
         compatible = "zmk,input-listener";
         device = <&joystick_split>;
