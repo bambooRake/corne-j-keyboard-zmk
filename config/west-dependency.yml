@@ -1,0 +1,18 @@
+manifest:
+  remotes:
+    - name: cormoran
+      url-base: https://github.com/cormoran
+    - name: badjeff
+      url-base: https://github.com/badjeff
+  projects:
+    - name: zmk-west-commands
+      remote: cormoran
+      import: true
+      revision: v1.0.0
+    - name: zmk
+      remote: cormoran
+      revision: main
+      import: app/west.yml
+    - name: zmk-analog-input-driver
+      remote: badjeff
+      revision: main

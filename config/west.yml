@@ -1,16 +1,3 @@
 manifest:
-  remotes:
-    - name: cormoran
-      url-base: https://github.com/cormoran
-    - name: badjeff
-      url-base: https://github.com/badjeff
-  projects:
-    - name: zmk
-      remote: cormoran
-      revision: main
-      import: app/west.yml
-    - name: zmk-analog-input-driver
-      remote: badjeff
-      revision: main
   self:
-    path: config
+    import: west-isolated.yml
