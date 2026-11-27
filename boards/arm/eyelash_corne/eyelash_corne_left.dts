@@ -10,3 +10,14 @@
 &left_encoder {
     status = "okay";
 };
+
+/ {
+    joystick_split: joystick_split {
+        compatible = "zmk,input-split";
+    };
+
+    joystick_listener: joystick_listener {
+        compatible = "zmk,input-listener";
+        device = <&joystick_split>;
+    };
+};
