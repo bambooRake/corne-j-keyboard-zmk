@@ -15,8 +15,8 @@
 };
 
 /* Leave P0.13 untouched on right half so VCC to the analog joystick is never cut off. */
-&ext_power {
-    status = "disabled";
+/ {
+    /delete-node/ EXT_POWER;
 };
 
 &adc {
