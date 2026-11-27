@@ -6,8 +6,6 @@
 */
 
 #include "eyelash_corne.dtsi"
-#include <zephyr/dt-bindings/adc/adc.h>
-#include <zephyr/dt-bindings/adc/nrf-adc.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
 &default_transform {
@@ -18,53 +16,81 @@
     status = "disabled";
 };
 
-&adc {
-    #address-cells = <1>;
-    #size-cells = <0>;
-
-    /* Use channels 1 and 2 so channel 0 remains reserved for vbatt (VDDHDIV5). */
-    channel@1 {
-        reg = <1>;
-        zephyr,gain = "ADC_GAIN_1_6";
-        zephyr,reference = "ADC_REF_INTERNAL";
-        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-        zephyr,input-positive = <NRF_SAADC_AIN5>; /* P0.29 */
-        zephyr,resolution = <12>;
-    };
-
-    channel@2 {
-        reg = <2>;
-        zephyr,gain = "ADC_GAIN_1_6";
-        zephyr,reference = "ADC_REF_INTERNAL";
-        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-        zephyr,input-positive = <NRF_SAADC_AIN0>; /* P0.02 */
-        zephyr,resolution = <12>;
-    };
-};
-
 / {
     anin0: analog_input_0 {
         compatible = "zmk,analog-input";
-        sampling-hz = <100>;
-        x-ch {
-            io-channels = <&adc 1>; // P0.29 (AIN5)
+        sampling-hz = <10>;
+
+        /* Scan all non-matrix SAADC pins (AIN0..AIN6; AIN7=P0.31 is Row 0) */
+        ain0 {
+            io-channels = <&adc 0>; // P0.02 (Y)
             mv-mid = <1630>;
             mv-min-max = <1600>;
             mv-deadzone = <80>;
             scale-multiplier = <1>;
-            scale-divisor = <70>;
+            scale-divisor = <1000>;
+            evt-type = <INPUT_EV_REL>;
+            input-code = <INPUT_REL_Y>;
+        };
+        ain1 {
+            io-channels = <&adc 1>; // P0.03
+            mv-mid = <1630>;
+            mv-min-max = <1600>;
+            mv-deadzone = <80>;
+            scale-multiplier = <1>;
+            scale-divisor = <2000>;
             evt-type = <INPUT_EV_REL>;
             input-code = <INPUT_REL_X>;
         };
-        y-ch {
-            io-channels = <&adc 2>; // P0.02 (AIN0)
+        ain2 {
+            io-channels = <&adc 2>; // P0.04
             mv-mid = <1630>;
             mv-min-max = <1600>;
             mv-deadzone = <80>;
             scale-multiplier = <1>;
-            scale-divisor = <70>;
+            scale-divisor = <2000>;
             evt-type = <INPUT_EV_REL>;
-            input-code = <INPUT_REL_Y>;
+            input-code = <INPUT_REL_X>;
+        };
+        ain3 {
+            io-channels = <&adc 3>; // P0.05
+            mv-mid = <1630>;
+            mv-min-max = <1600>;
+            mv-deadzone = <80>;
+            scale-multiplier = <1>;
+            scale-divisor = <2000>;
+            evt-type = <INPUT_EV_REL>;
+            input-code = <INPUT_REL_X>;
+        };
+        ain4 {
+            io-channels = <&adc 4>; // P0.28
+            mv-mid = <1630>;
+            mv-min-max = <1600>;
+            mv-deadzone = <80>;
+            scale-multiplier = <1>;
+            scale-divisor = <2000>;
+            evt-type = <INPUT_EV_REL>;
+            input-code = <INPUT_REL_X>;
+        };
+        ain5 {
+            io-channels = <&adc 5>; // P0.29 (X)
+            mv-mid = <1630>;
+            mv-min-max = <1600>;
+            mv-deadzone = <80>;
+            scale-multiplier = <1>;
+            scale-divisor = <1000>;
+            evt-type = <INPUT_EV_REL>;
+            input-code = <INPUT_REL_X>;
+        };
+        ain6 {
+            io-channels = <&adc 6>; // P0.30
+            mv-mid = <1630>;
+            mv-min-max = <1600>;
+            mv-deadzone = <80>;
+            scale-multiplier = <1>;
+            scale-divisor = <2000>;
+            evt-type = <INPUT_EV_REL>;
+            input-code = <INPUT_REL_X>;
         };
     };
 };
