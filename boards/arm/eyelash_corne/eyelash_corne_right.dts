@@ -34,9 +34,9 @@
         };
         x-ch {
             io-channels = <&adc 5>; // P0.29 (AIN5)
-            mv-mid = <1640>;
+            mv-mid = <1720>;
             mv-min-max = <1600>;
-            mv-deadzone = <300>;
+            mv-deadzone = <250>;
             scale-multiplier = <1>;
             scale-divisor = <70>;
             evt-type = <INPUT_EV_REL>;
