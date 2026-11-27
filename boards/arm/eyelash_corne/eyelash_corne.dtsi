@@ -20,7 +20,6 @@
         zephyr,code-partition = &code_partition;
         zephyr,sram = &sram0;
         zephyr,flash = &flash0;
-        zephyr,display = &oled;
         zmk,kscan = &kscan0;
         zmk,battery = &vbatt;
         zmk,underglow = &led_strip;
@@ -207,7 +206,7 @@ zephyr_udc0: &usbd {
 };
 
 &i2c0 {
-    status = "okay";
+    status = "disabled";
     compatible = "nordic,nrf-twim";
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
