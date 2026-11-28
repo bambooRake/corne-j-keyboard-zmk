@@ -79,3 +79,7 @@ manifest:
     - name: zmk-feature-zephyr-setting-expose
       remote: cormoran
       revision: main
+
+    - name: zmk-feature-runtime-tapdance
+      remote: cormoran
+      revision: main
