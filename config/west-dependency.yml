@@ -11,8 +11,67 @@ manifest:
       revision: v1.0.0
     - name: zmk
       remote: cormoran
-      revision: main
+      revision: main+dya
       import: app/west.yml
     - name: zmk-analog-input-driver
       remote: badjeff
       revision: main
+
+    - name: zmk-feature-custom-settings
+      remote: cormoran
+      revision: main
+
+    - name: zmk-feature-fast-keymap
+      remote: cormoran
+      revision: main
+
+    - name: zmk-feature-runtime-macro
+      remote: cormoran
+      revision: main
+
+    - name: zmk-feature-runtime-combo
+      remote: cormoran
+      revision: main
+
+    - name: zmk-feature-input-stream
+      remote: cormoran
+      revision: main
+
+    - name: zmk-module-runtime-input-processor
+      remote: cormoran
+      revision: main
+
+    - name: zmk-module-ble-management
+      remote: cormoran
+      revision: main
+
+    - name: zmk-feature-os-detection
+      remote: cormoran
+      revision: main
+
+    - name: zmk-module-settings-rpc
+      remote: cormoran
+      revision: main
+
+    - name: zmk-feature-device-info
+      remote: cormoran
+      revision: main
+
+    - name: zmk-feature-watchdog
+      remote: cormoran
+      revision: main
+
+    - name: zmk-module-devtool
+      remote: cormoran
+      revision: main
+
+    - name: zmk-feature-kscan-diagnostics
+      remote: cormoran
+      revision: main
+
+    - name: zmk-feature-module-physical-layout
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-default-layer
+      remote: cormoran
+      revision: codex/custom-rpc-rewrite
